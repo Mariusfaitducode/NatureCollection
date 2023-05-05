@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import fr.marscode.naturecollection.R
 import fr.marscode.naturecollection.adapter.PlantAdapter
+import fr.marscode.naturecollection.adapter.PlantItemDecoration
 
 class HomeFragment : Fragment() {
 
@@ -16,7 +17,11 @@ class HomeFragment : Fragment() {
 
         //Recuperer le recyclerview
         val horizonalRecyclerView = view?.findViewById<RecyclerView>(R.id.horizontal_recycler_view)
-        horizonalRecyclerView?.adapter = PlantAdapter()
+        horizonalRecyclerView?.adapter = PlantAdapter(R.layout.item_horizontal_plant)
+
+        val verticalRecyclerView = view?.findViewById<RecyclerView>(R.id.vertical_recycler_view)
+        verticalRecyclerView?.adapter = PlantAdapter(R.layout.item_vertical_plant)
+        verticalRecyclerView?.addItemDecoration(PlantItemDecoration())
 
         return view
     }
