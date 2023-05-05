@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.NatureCollection" parent="Theme.AppCompat.Light">
         <!-- Customize your light theme here. -->
-
+        <item name="colorPrimary">#fff</item>
     </style>
 
     <style name="Theme.NatureCollection" parent="Base.Theme.NatureCollection" />
