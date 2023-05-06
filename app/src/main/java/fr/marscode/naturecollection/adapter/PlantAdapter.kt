@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.marscode.naturecollection.MainActivity
 import fr.marscode.naturecollection.PlantModel
+import fr.marscode.naturecollection.PlantPopup
 import fr.marscode.naturecollection.PlantRepository
 import fr.marscode.naturecollection.PlantRepository.Singleton.databaseRef
 import fr.marscode.naturecollection.R
 
 class PlantAdapter(
-    private val context: MainActivity,
+    val context: MainActivity,
     private val plantList: List<PlantModel>,
     private val layoutId: Int) : RecyclerView.Adapter<PlantAdapter.ViewHolder>(){
 
@@ -68,6 +69,11 @@ class PlantAdapter(
 
             //mettre à jour
             repo.updatePlant(currentPlant)
+        }
+
+        //rajouter interaction clique sur la plante
+        holder.itemView.setOnClickListener{
+            PlantPopup(this, currentPlant).show()
         }
     }
     //mettre à jour objet plante dans bdd
