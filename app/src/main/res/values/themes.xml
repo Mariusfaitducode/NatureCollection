@@ -3,6 +3,9 @@
     <style name="Base.Theme.NatureCollection" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">#fff</item>
+
+        <item name="android:spinnerItemStyle">@style/DefaultTextStyle</item>
+        <item name="android:spinnerDropDownItemStyle">@style/DefaultTextStyle</item>
     </style>
 
     <style name="Theme.NatureCollection" parent="Base.Theme.NatureCollection" />
@@ -22,5 +25,11 @@
     <!-- Creer le composant titre par défaut -->
     <style name="TitleTextStyle" parent="SubtitleTextStyle">
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <!-- Style pour bottom navigation -->
+    <style name="BottomNavigationStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:textSize">18sp</item>
+        <item name="fontFamily">@font/kanit</item>
     </style>
 </resources>
