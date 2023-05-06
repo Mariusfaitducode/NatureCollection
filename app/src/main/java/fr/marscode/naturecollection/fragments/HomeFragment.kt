@@ -11,6 +11,7 @@ import fr.marscode.naturecollection.PlantModel
 import fr.marscode.naturecollection.R
 import fr.marscode.naturecollection.adapter.PlantAdapter
 import fr.marscode.naturecollection.adapter.PlantItemDecoration
+import fr.marscode.naturecollection.PlantRepository.Singleton.plantList
 
 class HomeFragment(private val context : MainActivity) : Fragment() {
 
@@ -19,52 +20,15 @@ class HomeFragment(private val context : MainActivity) : Fragment() {
 
         //Créer une liste qui stocke les plantes
 
-        val plantlist = arrayListOf<PlantModel>()
 
-        //Enregistrer dans la liste
 
-        plantlist.add(
-            PlantModel(
-            "pissenlit",
-            "il faut souffler",
-            "https://cdn.pixabay.com/photo/2015/02/06/19/19/flower-626389_960_720.jpg",
-            false
-        )
-        )
-
-        plantlist.add(
-            PlantModel(
-                "rose",
-                "fleur de l'amour",
-                "https://cdn.pixabay.com/photo/2015/04/19/08/32/rose-729509_960_720.jpg",
-                false
-            )
-        )
-
-        plantlist.add(
-            PlantModel(
-                "cactus",
-                "ça pique !",
-                "https://cdn.pixabay.com/photo/2021/10/26/12/23/cactus-6743531_960_720.jpg",
-                true
-            )
-        )
-
-        plantlist.add(
-            PlantModel(
-                "tulipe",
-                "de toutes les couleurs",
-                "https://cdn.pixabay.com/photo/2018/05/01/13/53/tulips-3365630_960_720.jpg",
-                false
-            )
-        )
 
         //Recuperer le recyclerview
         val horizonalRecyclerView = view?.findViewById<RecyclerView>(R.id.horizontal_recycler_view)
-        horizonalRecyclerView?.adapter = PlantAdapter(context, plantlist, R.layout.item_horizontal_plant)
+        horizonalRecyclerView?.adapter = PlantAdapter(context, plantList, R.layout.item_horizontal_plant)
 
         val verticalRecyclerView = view?.findViewById<RecyclerView>(R.id.vertical_recycler_view)
-        verticalRecyclerView?.adapter = PlantAdapter(context, plantlist, R.layout.item_vertical_plant)
+        verticalRecyclerView?.adapter = PlantAdapter(context, plantList, R.layout.item_vertical_plant)
         verticalRecyclerView?.addItemDecoration(PlantItemDecoration())
 
         return view

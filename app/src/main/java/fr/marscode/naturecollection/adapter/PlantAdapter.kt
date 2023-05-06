@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import fr.marscode.naturecollection.MainActivity
 import fr.marscode.naturecollection.PlantModel
+import fr.marscode.naturecollection.PlantRepository
+import fr.marscode.naturecollection.PlantRepository.Singleton.databaseRef
 import fr.marscode.naturecollection.R
 
 class PlantAdapter(
@@ -38,8 +40,11 @@ class PlantAdapter(
         //recuperer les informations de la plante
         val currentPlant = plantList[position]
 
+        //Recup repository
+        val repo = PlantRepository()
+
         //utiliser glide pour recuperer image avec lien
-        Glide.with(context).load(Uri.parse(currentPlant.image_url)).into(holder.plantImage)
+        Glide.with(context).load(Uri.parse(currentPlant.imageUrl)).into(holder.plantImage)
 
         //mettre à jour nom de la plante
         holder.plantName?.text = currentPlant.name
@@ -53,7 +58,19 @@ class PlantAdapter(
         }
         else{
             holder.starIcon.setImageResource(R.drawable.ic_unstar)
+        }
 
+        //rajouter interraction sur l'étoile
+        holder.starIcon.setOnClickListener {
+
+            //inverser le bouton de like
+            currentPlant.liked = !currentPlant.liked
+
+            //mettre à jour
+            repo.updatePlant(currentPlant)
         }
     }
+    //mettre à jour objet plante dans bdd
+
+
 }
